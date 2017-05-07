@@ -18,6 +18,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+    //On Click of ascending Button the data will be sorted in ascending order.
+    //On Click of descending Button the data will be sorted in descending order.
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
     Button acndBtn;
@@ -35,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         acndBtn = (Button) findViewById(R.id.acndBtn);
         descBtn = (Button) findViewById(R.id.dsndBtn);
         listView = (ListView) findViewById(R.id.listview);
-
+    // added elements in list view using array list
         mnthString = new ArrayList<String>();
         mnthString.add("Jan");
         mnthString.add("Feb");
@@ -50,6 +53,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mnthString.add("Nov");
         mnthString.add("Dec");
 
+        // binding data to the adapter
         stringAdapter = new StringAdapter(MainActivity.this, R.layout.sort_list_item, mnthString);
         listView.setAdapter((ListAdapter) stringAdapter);
 
@@ -57,7 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         descBtn.setOnClickListener(this);
 
     }
-
+    // Comparator class to compare the strings for ascending order
     public static Comparator<String> StringAscComparator = new Comparator<String>() {
 
         public int compare(String app1, String app2) {
@@ -68,6 +72,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             return stringName1.compareToIgnoreCase(stringName2);
         }
     };
+    // Comparator class to compare the strings for descending order
     private static Comparator<String> StringDescComparator = new Comparator<String>() {
         @Override
         public int compare(String app1, String app2) {
@@ -79,6 +84,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     };
 
+    //onclick() to perform the task if user has pressed ascending order then it will be sorted in ascending
+    // if the user has pressed descending order then it will be sorted in descending
     @Override
     public void onClick(View v) {
 
